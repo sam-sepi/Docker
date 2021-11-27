@@ -50,5 +50,15 @@ CMD <comando> <parametro_1> ... <parametro_n>
 
 CMD ["<comando>", "<parametro_1>", ..., "<parametro_n>"]
 
-Se non esiste un’istruzione ENTRYPOINT all’interno del Dockerfile in esame, l’utilizzo dell’istruzione CMD farà in modo che all’avvio del container venga eseguito il comando indicato. Questo è esattamente lo stesso comportamento dell’istruzione ENTRYPOINT, ma in questo caso possiamo sovrascrivere questo comando specificandone uno diverso nel momento in cui eseguiamo il comando docker run da terminale.
+Se non esiste un’istruzione ENTRYPOINT all’interno del Dockerfile in esame, l’utilizzo dell’istruzione CMD farà in modo che all’avvio del container venga eseguito il comando indicato. Questo è esattamente lo stesso comportamento dell’istruzione ENTRYPOINT, ma in questo caso possiamo sovrascrivere questo comando specificandone uno diverso nel momento in cui eseguiamo il comando docker run da terminale
 
+# Build
+genererà l’immagine che poi utilizzeremo. La sintassi di questo comando è abbastanza semplice:
+
+docker build [OPT ...] <build context>
+
+Il parametro <build context> è obbligatorio e fornisce all’engine di build il relativo contesto. Ad esempio, l’istruzione COPY, utilizzabile all’interno del Dockerfile, ha come sorgente un path obbligatoriamente relativo, e per risolvere tale path l’engine ha bisogno di conoscerne il contesto: è proprio qui che entra in gioco il <build context>. Tale informazione è esprimibile come un normale percorso di filesystem Unix, ove, il più delle volte viene usato il carattere punto (.), in modo da specificare la directory corrente come contesto di build.
+
+Opt -t per esprimere un tag
+
+docker build -t esempio_1 .
